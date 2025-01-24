@@ -4,8 +4,9 @@ import { Text, View, StyleSheet, ScrollView, Image } from "react-native";
 export default function Home() {
   // Array de itens do cardápio
   const itens = [
-    { id: 1, nome: "Item 1", preco: 10.00, imagem: "https://example.com/item1.jpg" },
+    { id: 1, nome: "Classico suculento", preco: 10.00, imagem: "https://example.com/item1.jpg", descricao:"Hambúrguer artesanal 100% bovino, queijo derretido, alface fresca, tomate, cebola caramelizada e molho especial no pão brioche macio."  },
     { id: 2, nome: "Item 2", preco: 20.00, imagem: "https://example.com/item2.jpg" },
+    { id: 3, nome: "Item 3", preco: 30.00, imagem: "https://example.com/item3.jpg" },
     { id: 3, nome: "Item 3", preco: 30.00, imagem: "https://example.com/item3.jpg" },
     // Adicione mais itens conforme necessário
   ];
@@ -18,8 +19,10 @@ export default function Home() {
           <View key={item.id} style={styles.card}>
             {/* Exibindo a imagem do item */}
             <Image source={{ uri: item.imagem }} style={styles.imagem} />
-            <Text style={styles.nome}>{item.nome}</Text>
+            <Text style={styles.descricao}>{item.descricao}</Text>
+            <Text style={styles.nome}>{item.nome} </Text>
             <Text style={styles.preco}>R$ {item.preco.toFixed(2)}</Text>
+            
           </View>
         ))}
       </ScrollView>
@@ -31,9 +34,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
-    alignItems: "center",
     backgroundColor: "#f8f8f8",
-    paddingTop: 20,
+    paddingTop: 0.1,
+    
   },
   title: {
     fontSize: 24,
@@ -43,18 +46,18 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   cardapioContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    padding: 10,
+    flexDirection: "column", // Alinha os itens verticalmente
+    alignItems: "flex-start", // Centraliza os itens horizontalmente
+    padding: 20,
   },
+  
   card: {
-    width: "30%", // Tamanho do quadrado (30% da largura da tela)
-    aspectRatio: 1, // Garantir que o card seja quadrado
-    marginBottom: 10,
+    width: "90%", // Tamanho do quadrado (30% da largura da tela)
+    aspectRatio: 2, // Garantir que o card seja quadrado
+    marginBottom: 30,
     backgroundColor: "#fff",
     borderRadius: 8,
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "center",
     elevation: 5, // Sombra no Android
     shadowColor: "#000", // Sombra no iOS
@@ -70,10 +73,13 @@ const styles = StyleSheet.create({
   nome: {
     fontSize: 18,
     fontWeight: "bold",
-    marginTop: 10,
+    marginTop: 1,
   },
   preco: {
     fontSize: 16,
     color: "#888",
   },
+  descricao:{
+    fontSize:10
+  }
 });
