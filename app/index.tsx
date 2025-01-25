@@ -1,14 +1,38 @@
 import React from "react";
-import { Text, View, StyleSheet, ScrollView, Image } from "react-native";
+import { Text, View, ScrollView, Image } from "react-native";
+import  styles from"./estilos";
 
 export default function Home() {
   // Array de itens do cardápio
   const itens = [
-    { id: 1, nome: "Classico suculento", preco: 10.00, imagem: "https://example.com/item1.jpg", descricao:"Hambúrguer artesanal 100% bovino, queijo derretido, alface fresca, tomate, cebola caramelizada e molho especial no pão brioche macio."  },
-    { id: 2, nome: "Item 2", preco: 20.00, imagem: "https://example.com/item2.jpg" },
-    { id: 3, nome: "Item 3", preco: 30.00, imagem: "https://example.com/item3.jpg" },
-    { id: 3, nome: "Item 3", preco: 30.00, imagem: "https://example.com/item3.jpg" },
-    // Adicione mais itens conforme necessário
+    {
+      id: 1,
+      nome: "Clássico Suculento",
+      preco: 10.0,
+      imagem: "https://example.com/item1.jpg",
+      descricao: "Hambúrguer artesanal 100% bovino, queijo derretido, alface fresca, tomate, cebola caramelizada e molho especial no pão brioche macio.",
+    },
+    {
+      id: 2,
+      nome: "Item 2",
+      preco: 20.0,
+      imagem: "https://example.com/item2.jpg",
+      descricao: "Descrição não disponível.",
+    },
+    {
+      id: 3,
+      nome: "Item 3",
+      preco: 30.0,
+      imagem: "https://example.com/item3.jpg",
+      descricao: "Descrição não disponível.",
+    },
+    {
+      id: 4,
+      nome: "Item 4",
+      preco: 40.0,
+      imagem: "https://example.com/item4.jpg",
+      descricao: "Descrição não disponível.",
+    },
   ];
 
   return (
@@ -17,12 +41,12 @@ export default function Home() {
       <ScrollView contentContainerStyle={styles.cardapioContainer}>
         {itens.map((item) => (
           <View key={item.id} style={styles.card}>
-            {/* Exibindo a imagem do item */}
             <Image source={{ uri: item.imagem }} style={styles.imagem} />
-            <Text style={styles.descricao}>{item.descricao}</Text>
-            <Text style={styles.nome}>{item.nome} </Text>
-            <Text style={styles.preco}>R$ {item.preco.toFixed(2)}</Text>
-            
+            <View style={styles.infoContainer}>
+              <Text style={styles.nome}>{item.nome}</Text>
+              <Text style={styles.descricao}>{item.descricao}</Text>
+              <Text style={styles.preco}>R$ {item.preco.toFixed(2)}</Text>
+            </View>
           </View>
         ))}
       </ScrollView>
@@ -30,56 +54,3 @@ export default function Home() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-start",
-    backgroundColor: "#f8f8f8",
-    paddingTop: 0.1,
-    
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  cardapioContainer: {
-    flexDirection: "column", // Alinha os itens verticalmente
-    alignItems: "flex-start", // Centraliza os itens horizontalmente
-    padding: 20,
-  },
-  
-  card: {
-    width: "90%", // Tamanho do quadrado (30% da largura da tela)
-    aspectRatio: 2, // Garantir que o card seja quadrado
-    marginBottom: 30,
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    alignItems: "flex-start",
-    justifyContent: "center",
-    elevation: 5, // Sombra no Android
-    shadowColor: "#000", // Sombra no iOS
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-  },
-  imagem: {
-    width: "100%",
-    height: "100%",
-    borderRadius: 8,
-  },
-  nome: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: 1,
-  },
-  preco: {
-    fontSize: 16,
-    color: "#888",
-  },
-  descricao:{
-    fontSize:10
-  }
-});
